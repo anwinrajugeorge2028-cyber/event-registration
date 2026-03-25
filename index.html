@@ -2,29 +2,73 @@
 <html>
 <head>
     <title>Event Registration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <style>
         body {
-            font-family: Arial;
-            background: #f4f4f4;
-            text-align: center;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
+
         .container {
             background: white;
-            padding: 20px;
-            width: 300px;
-            margin: 100px auto;
-            border-radius: 10px;
-            box-shadow: 0 0 10px gray;
+            padding: 30px;
+            width: 350px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
         }
-        input, button {
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input {
             width: 90%;
-            padding: 10px;
+            padding: 12px;
             margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            outline: none;
         }
+
+        input:focus {
+            border-color: #4facfe;
+        }
+
         button {
-            background: #007bff;
-            color: white;
+            width: 95%;
+            padding: 12px;
+            margin-top: 10px;
             border: none;
+            border-radius: 8px;
+            background: #4facfe;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #007bff;
+        }
+
+        #message {
+            margin-top: 15px;
+            font-weight: bold;
+            color: green;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(20px);}
+            to {opacity: 1; transform: translateY(0);}
         }
     </style>
 </head>
@@ -32,12 +76,12 @@
 <body>
 
 <div class="container">
-    <h2>Event Registration</h2>
+    <h2>🎉 Event Registration</h2>
 
     <form onsubmit="submitForm(event)">
-        <input type="text" id="name" placeholder="Enter Name" required>
-        <input type="email" id="email" placeholder="Enter Email" required>
-        <button type="submit">Register</button>
+        <input type="text" id="name" placeholder="Enter your name" required>
+        <input type="email" id="email" placeholder="Enter your email" required>
+        <button type="submit">Register Now</button>
     </form>
 
     <p id="message"></p>
@@ -48,15 +92,9 @@ function submitForm(e) {
     e.preventDefault();
 
     let name = document.getElementById("name").value;
-    let email = document.getElementById("email").value;
 
-    if(name === "" || email === ""){
-        document.getElementById("message").innerText = "Please fill all fields!";
-        return;
-    }
-
-    document.getElementById("message").innerText = 
-        "Thank you " + name + "! Registration Successful 🎉";
+    document.getElementById("message").innerText =
+        "✅ Thank you " + name + "! You are successfully registered.";
 }
 </script>
 
