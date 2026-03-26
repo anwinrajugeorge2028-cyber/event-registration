@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Admin Dashboard</h2>
+
+    <h3>📋 Recent Registrations</h3>
+
+    <ul id="userList"></ul>
+
+    <button onclick="clearData()">Clear All Data</button>
+</div>
+
+<script>
+let users = JSON.parse(localStorage.getItem("users")) || [];
+
+let list = document.getElementById("userList");
+
+if(users.length === 0){
+    list.innerHTML = "<li>No registrations yet</li>";
+} else {
+    users.slice().reverse().forEach(user => {
+        let li = document.createElement("li");
+        li.innerText = user.name + " - " + user.email;
+        list.appendChild(li);
+    });
+}
+
+function clearData(){
+    localStorage.removeItem("users");
+    location.reload();
+}
+</script>
+
+</body>
+</html>
